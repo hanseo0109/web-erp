@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <!-- 두수를 입력받는 UI(폼:입력양식) -->
+   <!--  http://locahhost:8081/weberp/calc -->
+   <form action="/weberp/calc" method="post">
+         <input type="text" name="su1"/>~<input type="text" name="su2"/>
+         <input type="submit" value="전송"/>
+   </form>
+    <a href="/weberp/calc?num=5">스프링 프레임워크(GET)</a><br/>
+    <a href="/weberp/calc?su1=5&su2=300">두수의 합</a>
+</body>
+</html>
