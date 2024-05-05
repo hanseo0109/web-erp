@@ -31,6 +31,7 @@
                <th>가격</th>
                <th>저자</th>
                <th>페이지</th>
+               <th>삭제</th>
              </tr>
            </thead>
            <tbody>
@@ -41,11 +42,14 @@
                <td>${book.price}</td>
                <td>${book.author}</td>
                <td>${book.page}</td>
+                <%-- 2024.05.06 [ mod-hs ] GET방식으로 넘기는게 아닌 `숫자`만 넘겨서 server에서 처리            --%>
+               <td><button class="btn btn-sm btn-danger" onclick="location.href='${cpath}/remove/${book.num}'">삭제</button></td>
+<%--               <td><button class="btn btn-sm btn-danger" onclick="location.href='${cpath}/remove?num=${book.num}'">삭제</button></td>--%>
               </tr>
            </c:forEach>
            </tbody>
        </table>
-       <button class="btn btn-sm btn-danger">등록</button>
+       <button class="btn btn-sm btn-danger" onclick="location.href='${cpath}/register'">등록</button>
     </div>
     <div class="card-footer">패스트캠퍼스 부트캠프 8기_박매일</div>
   </div>
