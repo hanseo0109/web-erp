@@ -1,6 +1,8 @@
 package repository;
 
 import entity.Book;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
@@ -12,6 +14,12 @@ import java.util.List;
 public interface BookMapper{    // BookDAO dao = new BookDAO(); 는 이제 사용 안함
     // CRUD Method
     public List<Book> bookList();
+    public List<Book> bookList(@Param("order") String order);
     public int bookRegister(Book book);
     public void bookDelete(int num);   // #{num}
+    public Book getByNum(int num);     // #{num}
+
+    public void bookUpdate(@Param("num") int num, @Param("book") Book book);
+    // 2024.05.06 [ mod-hs ] parameter가 다건이면 @Param이용
+//    public void bookUpdate(int num , Book book);
 }

@@ -6,8 +6,16 @@
 <mapper namespace="repository.BookMapper">
 <!-- 2024.05.05 [ mod-hs ] spring형태로 변경되면서 mapper name 변경 -->
 <!--<mapper namespace="org.mybatis.example.BlogMapper">-->
-  <select id="bookList" resultType="entity.Book">
+
+  <select id="bookList" parameterType="String" resultType="entity.Book">
     select * from book
+    <if test="order != null and order != ''">
+      order by price ${order}
+    </if>
+  </select>
+
+  <select id="getByNum" parameterType="int" resultType="entity.Book">
+    select * from book where num=#{num}
   </select>
 
   <insert id="bookRegister" parameterType="entity.Book">
@@ -15,6 +23,15 @@
     values( #{title}, #{price}, #{author}, #{page})
   </insert>
 
+  <update id="bookUpdate" parameterType="entity.Book">
+    update book
+    set title = #{book.title},
+        price = #{book.price},
+        author = #{book.author},
+        page = #{book.page}
+    where num = #{num}
+
+  </update>
   <!-- 타입이 하나인 경우 parameterType 생략 가능 -->
   <delete id="bookDelete">
     delete from book where num = #{num}

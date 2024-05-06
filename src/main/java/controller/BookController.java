@@ -24,22 +24,13 @@ public class BookController {
     private BookMapper mapper;
 
     // select
-    @RequestMapping("/bookList")
-    public String list(Model model) {
+    @RequestMapping("/bookList/{order}")
+    public String list(Model model , @PathVariable String order) {
         // 책 리스트 가져오기
         // View : list
-        List<Book> list = mapper.bookList();
+        List<Book> list = mapper.bookList(order);
         model.addAttribute("list", list);
-//        BookDAO dao = new BookDAO();
-//        List<Book> list = dao.bookList();
-//        model.addAttribute("list", list);
         return "list";  // view의 논리적인 이름
-    }
-
-    @RequestMapping("/bookJson")
-    public @ResponseBody List<Book> list(){     // Json -> List로 convert
-        List<Book> list = mapper.bookList();
-        return list;  // list -> [ { } , { } ] ----> 응답
     }
 
     // insert
@@ -58,7 +49,7 @@ public class BookController {
         // ( 중요! ) book 등록 후 바로 return redirect로 가면 안됨 ( ex. return "list" )
         //  ㄴ 왜?
         //      DB에 있는 내역을 다시 불러와서 `객체 바인딩` 해줘야 하기 때문에
-        return "redirect:bookList";     // web-erp/bookList
+        return "redirect:/bookList";     // web-erp/bookList
     }
 
 //    @GetMapping("/remove")

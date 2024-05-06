@@ -13,5 +13,4 @@ public class Book {
     private int price;
     private String author;
     private int page;
-    // Lombok API
 }

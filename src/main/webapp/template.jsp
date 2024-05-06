@@ -24,7 +24,7 @@
     <div class="card-body">
         컨텐츠가 들어가는 부분
     </div>
-    <div class="card-footer">패스트캠퍼스 부트캠프 8기_박매일</div>
+    <div class="card-footer">패스트캠퍼스 부트캠프 8기_한성민</div>
   </div>
 </div>
 
